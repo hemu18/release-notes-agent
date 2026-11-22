@@ -223,6 +223,7 @@ const who = id => !id ? "someone" : id===meId ? "you" : (names[id] || "a colleag
   try{ db = await claude.use("db"); }catch(e){}
   try{ userCap = await claude.use("user"); if(userCap) meId = await userCap.id(); }catch(e){}
   if(mcp&&S.source==="jira") loadJira();
+  if(!mcp&&S.source==="jira"&&S.stage==="tickets"){ S.source="sheet"; try{ useSheet(); }catch(e){} }
   if(!db){ dbState="off"; render(); return; }
   const timer=setTimeout(()=>{ if(dbState==="loading"){ dbState="slow"; refreshTabs(); } },10000);
   db.doc("settings/config").onSnapshot(s=>{ if(s.exists){ const d=s.data(); CFG=CORE.withCfg(d.cfg); cfgLog=d.changelog||[]; } if(currentTab==="settings") renderSettings(); },()=>{});
@@ -392,7 +393,7 @@ function viewTickets(){
 }
 function renderBanner(){
   const el=$("#runBanner"); if(!el) return;
-  if(dbState==="off"){ el.innerHTML=`<div class="notice warn">Saved history isn't available in this view, so runs can't be resumed and the audit trail won't be kept. Open the page in claude.ai.</div>`; return; }
+  if(dbState==="off"){ el.innerHTML=`<div class="notice warn"><b>Visitor view.</b> You can explore the flow with the sample tickets, and the <b>Evals</b> tab runs in full. Live Jira reads, the AI writer and evaluator, and saving to Confluence need a signed-in claude.ai account with Atlassian connected. To see a full run, watch the demo video or the GitHub README.</div>`; return; }
   if(dbState==="slow"){ el.innerHTML=`<div class="notice">Saved runs can't be reached yet; resuming will appear here when they load.</div>`; return; }
   const stuck=RUNS.find(r=>["generating","saving"].includes(r.status));
   if(!stuck){ el.innerHTML=""; return; }
