@@ -50,6 +50,8 @@ Design principle: **judgement that must be exact runs in code; the AI only write
 
 - [Product doc](docs/product.md): problem, flow, design, requirements R1 to R18, demo walkthrough
 - [Guardrails and evals spec](docs/guardrails-and-evals.md): hard rules H1 to H17, quality rules Q1 to Q8, checks and pass bar
+- [Architecture (HLD and LLD)](docs/architecture.md): components, data flow, rules engine, agents, integrations, stored data, failure handling
+- [Demo guide](docs/demo-guide.md): one-page walkthrough for visitors and for a full live run, with troubleshooting
 
 ## Repository
 
