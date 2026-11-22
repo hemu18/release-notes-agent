@@ -1,0 +1,10 @@
+doc_id,title,source,last_updated,audience,file
+DOC-01,Building campaign triggers with the rule builder,Confluence,2026-11-18,All customers,DOC-01_rule_builder.md
+DOC-02,Reminder settings for campaigns,Confluence,2026-11-18,All customers,DOC-02_reminder_settings.md
+DOC-03,Adding an NPS slider question,Confluence,2026-11-17,All customers,DOC-03_nps_slider.md
+DOC-04,Switching review widgets from grid to carousel,Confluence,2026-11-19,All customers,DOC-04_widget_carousel.md
+DOC-05,Exporting dashboards,Confluence,2026-06-10,All customers,DOC-05_dashboard_exports.md
+DOC-06,Salesforce sync settings,Confluence,2026-11-16,All customers,DOC-06_salesforce_sync.md
+DOC-07,Rotating your SAML certificate,Confluence,2026-11-19,All customers,DOC-07_saml_rotation.md
+DOC-08,Branded SSO login page – Bluepeak Mortgages,Google Drive,2026-11-15,Bluepeak Mortgages only,DOC-08_bluepeak_branded_login.md
+DOC-09,Dealer-group roll-up view – Silverline Motors pilot,Google Drive,2026-11-14,Silverline Motors only,DOC-09_silverline_rollup.md

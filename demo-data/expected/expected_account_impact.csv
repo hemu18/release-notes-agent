@@ -1,0 +1,13 @@
+account_id,account_name,expected_risk,renewal_date,days_to_renewal,arr_usd,csm,risk_tickets,evidence_support_tickets,renewal_within_60_days,action_required,good_news,customer_specific_tickets,separate_customer_note
+A03,Harbor Lane Homes,High,2026-12-20,29,42000,Priya,REL-104,S-511(negative),Y,N,,,N
+A06,Summit Auto Group,High,2026-12-31,40,210000,Anita,REL-101;REL-102;REL-104;REL-106,S-504(negative);S-505(negative);S-506(neutral),Y,N,,,N
+A01,Northwind Realty,High,2027-01-15,55,180000,Priya,REL-101;REL-102;REL-104;REL-106,S-501(negative);S-502(neutral);S-503(negative),Y,N,,,N
+A04,Crestview Lending,High,2027-02-28,99,150000,Anita,REL-105;REL-107,S-507(neutral);S-508(negative),N,Y,,,N
+A10,Greenfield Property Management,Medium,2027-01-31,71,48000,Priya,REL-101;REL-102,S-512(neutral),N,N,S-512>REL-112;S-513>REL-108,,N
+A12,Silverline Motors,Medium,2027-02-14,85,52000,Anita,REL-105,S-517(neutral);S-522(neutral),N,N,S-518>REL-104;S-522>REL-114,REL-114,Y
+A09,Lighthouse Financial,Medium,2027-05-20,180,195000,Anita,REL-105;REL-106;REL-107,S-509(neutral);S-510(neutral),N,Y,,,N
+A02,Bluepeak Mortgages,Medium,2027-06-30,221,240000,Rahul,REL-101;REL-106;REL-107,S-520(neutral);S-521(neutral),N,Y,S-521>REL-113,REL-113,Y
+A08,Oakridge Title,Low,2027-03-10,109,9000,Rahul,REL-104,,N,N,,,N
+A07,Riverbend Clinics,Not affected,2027-04-15,145,28000,Priya,,,N,N,S-516>REL-117,,N
+A11,Pinecrest Dental,Not affected,2027-08-01,253,7500,Rahul,,,N,N,,,N
+A05,Maple & Co Insurance,Not affected,2027-09-01,284,36000,Rahul,,,N,N,S-515>REL-103,,N

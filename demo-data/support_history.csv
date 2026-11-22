@@ -1,0 +1,23 @@
+ticket_id,account_id,date,feature_area,subject,sentiment
+S-501,A01,2026-10-02,campaign triggers,Campaigns not firing after survey completion,negative
+S-502,A01,2026-10-18,campaign triggers,Need help setting trigger conditions for new agents,neutral
+S-503,A01,2026-11-05,review widgets,Widget grid not matching our site design,negative
+S-504,A06,2026-09-12,campaign triggers,"Reminder emails going out too often, customers complaining",negative
+S-505,A06,2026-10-25,integrations,"Salesforce data delayed, sales team chasing stale records",negative
+S-506,A06,2026-11-10,review widgets,Request for a custom widget layout,neutral
+S-507,A04,2026-10-08,reporting,Leadership needs PDF export for the board pack,neutral
+S-508,A04,2026-11-03,SSO,SAML login failures after an IT change,negative
+S-509,A09,2026-09-20,reporting,PDF export formatting is off,neutral
+S-510,A09,2026-11-12,integrations,Question on Salesforce sync frequency,neutral
+S-511,A03,2026-11-01,review widgets,Grid widget broke on mobile,negative
+S-512,A10,2026-10-14,campaign triggers,Scheduled campaigns sent at the wrong time,negative
+S-513,A10,2026-11-08,notifications,Duplicate escalation emails,negative
+S-514,A02,2026-08-22,reporting,How to filter the dashboard by branch,neutral
+S-515,A05,2026-09-30,survey builder,Can we get an NPS slider question?,positive
+S-516,A07,2026-10-11,survey builder,Survey preview is slow,neutral
+S-517,A12,2026-10-29,reporting,Export to PDF for the monthly review,neutral
+S-518,A12,2026-11-14,review widgets,"Love the widgets, any new layouts coming?",positive
+S-519,A08,2026-07-20,review widgets,Widget not showing on our homepage,negative
+S-520,A02,2026-11-11,SSO,Received a certificate expiry warning,neutral
+S-521,A02,2026-10-20,SSO,Can our SSO login page show our branding and a helpdesk link?,neutral
+S-522,A12,2026-11-02,reporting,Need one view across all our dealer branches,neutral

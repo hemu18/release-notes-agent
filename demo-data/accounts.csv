@@ -1,0 +1,13 @@
+account_id,account_name,aliases,plan,arr_usd,renewal_date,features_used,config,primary_contact,csm
+A01,Northwind Realty,Northwind,Enterprise,180000,2027-01-15,campaign triggers;review widgets;reporting;integrations,reminder_interval=default;widget_layout=grid;dashboard_export=csv,"Dana Whitfield, Marketing Ops Lead",Priya
+A02,Bluepeak Mortgages,Bluepeak,Enterprise,240000,2027-06-30,campaign triggers;reporting;SSO;integrations,reminder_interval=custom;dashboard_export=csv;sso=saml,"Arjun Mehta, IT Director",Rahul
+A03,Harbor Lane Homes,Harbor Lane,Growth,42000,2026-12-20,review widgets;survey builder,widget_layout=grid,"Lisa Moreno, Office Manager",Priya
+A04,Crestview Lending,Crestview,Enterprise,150000,2027-02-28,reporting;SSO;notifications,dashboard_export=pdf;sso=saml,"Karen Lowe, VP Client Experience",Anita
+A05,Maple & Co Insurance,Maple & Co,Growth,36000,2027-09-01,survey builder;notifications,,"Tom Becker, CX Manager",Rahul
+A06,Summit Auto Group,Summit Auto,Enterprise,210000,2026-12-31,campaign triggers;review widgets;integrations,reminder_interval=default;widget_layout=grid,"Ray Castillo, Director of Customer Experience",Anita
+A07,Riverbend Clinics,Riverbend,Growth,28000,2027-04-15,survey builder;review widgets,widget_layout=badge,"Nina Shah, Practice Manager",Priya
+A08,Oakridge Title,Oakridge,Starter,9000,2027-03-10,review widgets,widget_layout=grid,"Paul Grant, Owner",Rahul
+A09,Lighthouse Financial,Lighthouse,Enterprise,195000,2027-05-20,reporting;SSO;integrations,dashboard_export=pdf;sso=saml,"Meera Iyer, Head of Client Insights",Anita
+A10,Greenfield Property Management,Greenfield,Growth,48000,2027-01-31,campaign triggers;notifications,reminder_interval=default,"Sam Ortiz, Operations Manager",Priya
+A11,Pinecrest Dental,Pinecrest,Starter,7500,2027-08-01,survey builder,,"Julia Park, Front Desk Lead",Rahul
+A12,Silverline Motors,Silverline,Growth,52000,2027-02-14,review widgets;reporting,widget_layout=badge;dashboard_export=pdf,"Victor Hale, Group CX Manager",Anita
