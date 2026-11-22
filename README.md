@@ -6,6 +6,8 @@ After every production release, this agent reads the release's Jira tickets, wri
 
 Built in a four-hour speedrun at The Product Folks UnConference, 22 Nov 2026.
 
+**Live demo:** https://claude.ai/artifact/Q99F5KScs9a2HNWaw75Egc. Visitors can explore the flow with sample tickets and run the Evals tab. A full live run (Jira, AI writer and evaluator, Confluence) needs a signed-in claude.ai account with Atlassian connected.
+
 ## What it does
 
 1. **Tickets** – reads the release's tickets live from Jira (or a sample spreadsheet). Product selects them, enters the release number and clicks **Merge**.
