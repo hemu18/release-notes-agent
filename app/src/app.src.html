@@ -393,7 +393,7 @@ function viewTickets(){
 }
 function renderBanner(){
   const el=$("#runBanner"); if(!el) return;
-  if(dbState==="off"){ el.innerHTML=`<div class="notice warn"><b>Visitor view.</b> You can explore the flow with the sample tickets, and the <b>Evals</b> tab runs in full. Live Jira reads, the AI writer and evaluator, and saving to Confluence need a signed-in claude.ai account with Atlassian connected. To see a full run, watch the demo video or the GitHub README.</div>`; return; }
+  if(dbState==="off"){ el.innerHTML=`<div class="notice warn"><b>Visitor view.</b> You can explore the flow with the sample tickets, and the <b>Evals</b> tab runs in full. <button class="btn ghost" id="snapBtn" style="margin-left:6px">See the notes from the last live run</button><div id="snapTop"></div> Live Jira reads, the AI writer and evaluator, and saving to Confluence need a signed-in claude.ai account with Atlassian connected. To see a full run, watch the demo video or the GitHub README.</div>`; if($("#snapBtn")) $("#snapBtn").onclick=()=>showSnapshot($("#snapTop")); return; }
   if(dbState==="slow"){ el.innerHTML=`<div class="notice">Saved runs can't be reached yet; resuming will appear here when they load.</div>`; return; }
   const stuck=RUNS.find(r=>["generating","saving"].includes(r.status));
   if(!stuck){ el.innerHTML=""; return; }
@@ -468,6 +468,9 @@ function buildNotes(){
     return n;
   });
 }
+// Read-only copy of the Confluence pages from the last live run, for visitors without Atlassian access
+function showSnapshot(el){ const s=D.snapshot; if(!el||!s) return;
+  el.innerHTML=`<h3 style="margin-top:14px">Saved in Confluence on ${esc(s.taken)} (read-only copy)</h3>${s.pages.map((p,i)=>`<details class="notecard" ${i===0?"open":""}><summary><b>${esc(p.title)}</b></summary><div class="snap" style="overflow-x:auto;margin-top:8px">${p.html}</div></details>`).join("")}`; }
 /* 5. Confirm */
 function viewConfirm(){
   const n=c=>S.cls.filter(r=>r.cls===c).length;
@@ -490,7 +493,7 @@ function viewConfirm(){
   <div class="row" style="margin-top:14px"><button class="btn" id="yesBtn" ${pending.length?"disabled":""}>${toWrite===0?`Yes, keep all ${kept} notes unchanged`:`Yes, prepare ${toWrite} note${toWrite===1?"":"s"}${kept?` and keep ${kept} unchanged`:""}`}</button>${pending.length?`<span class="small">Resolve ${pending.length} decision first</span>`:""}${S.prev&&(kept||S.rewriteAll)?`<label class="small"><input type="checkbox" id="rewriteAll" ${S.rewriteAll?"checked":""}> Rewrite all notes anyway (saved as new page versions)</label>`:""}</div>`;
   const rw=$("#rewriteAll"); if(rw) rw.onchange=()=>{S.rewriteAll=rw.checked; log(rw.checked?"Product chose to rewrite all notes":"Product chose to keep unchanged notes"); viewConfirm();};
   document.querySelectorAll("input[name^=dec-]").forEach(el=>el.onchange=()=>{const id=el.name.slice(4); S.decisions[id]=el.value; log(`${id}: Product chose "${el.parentElement.textContent.trim()}"`); viewConfirm();});
-  if(S.visitor){ $("#yesBtn").onclick=()=>{ $("#yesBtn").insertAdjacentHTML("afterend",`<div class="notice info" style="margin-top:10px"><b>Visitor mode stops here.</b> Writing and certifying use Claude, and saving uses Confluence, so they run only for a signed-in claude.ai user with Atlassian connected. The demo video and the GitHub README show a full run; the Evals tab runs the rule checks here.</div>`); $("#yesBtn").disabled=true; }; return; }
+  if(S.visitor){ $("#yesBtn").onclick=()=>{ $("#yesBtn").insertAdjacentHTML("afterend",`<div class="notice info" style="margin-top:10px"><b>Visitor mode: live writing is off.</b> Writing and certifying use Claude, and saving uses Confluence, so they run only for a signed-in claude.ai user with Atlassian connected. Below is a read-only copy of the Confluence pages from the last live run.</div><div id="snapHere"></div>`); $("#yesBtn").disabled=true; showSnapshot($("#snapHere")); }; return; }
   $("#yesBtn").onclick=()=>{ S.runId=`${S.release}_${S.mode}_${Date.now()}`; S.createdAt=new Date().toISOString(); S.createdBy=S.createdBy||meId;
     log(`Product confirmed: ${toWrite} notes to write${kept?`, ${kept} kept`:""}`,"ok"); persistRun("generating"); go("generate"); runGeneration(); };
 }
