@@ -731,9 +731,10 @@ function viewAccess(){
   $("#stage").innerHTML=`<h2>Access check</h2><p class="lead">Before reading any content, the agent confirms it can see only what this release needs.</p>
   ${S.access.map(c=>`<div class="check"><span class="dot ${c.state==="ok"?"ok":c.state==="bad"?"bad":"run"}">${c.state==="ok"?"✓":c.state==="bad"?"!":"…"}</span><div>${esc(c.text)}</div></div>`).join("")}
   ${prodNote("the agent uses its own service account. Confluence and Jira enforce the limits above, so the agent cannot see anything else even if its code tried. In this demo the page's code enforces them.")}
-  ${failed?`<div class="notice bad">The run is stopped until the access problem above is fixed.</div><button class="btn ghost" id="retryAccess">Check again</button>`:""}
+  ${failed?`<div class="notice bad">The run is stopped until the access problem above is fixed.</div><div class="row"><button class="btn ghost" id="retryAccess">Check again</button>${!mcp&&!sampleFn?`<button class="btn" id="visitorGo">Continue as a visitor (see the classification and risk; no AI writing or saving)</button>`:""}</div>`:""}
   ${ok?`<div class="row" style="margin-top:12px"><button class="btn" id="toConfirm">Continue</button></div>`:""}`;
   if($("#retryAccess")) $("#retryAccess").onclick=()=>runAccess();
+  if($("#visitorGo")) $("#visitorGo").onclick=()=>{ S.visitor=true; log("Visitor mode: classification and risk only; writing and saving are switched off","warn"); classifyAndPlan(); S.cls.forEach(r=>r.flags.forEach(f=>log(`${r.id}: ${f}`,"warn"))); log(`Classified ${S.cls.length} tickets`); go("confirm"); };
   if($("#toConfirm")) $("#toConfirm").onclick=()=>{ classifyAndPlan(); S.cls.forEach(r=>r.flags.forEach(f=>log(`${r.id}: ${f}`,"warn"))); log(`Classified ${S.cls.length} tickets`); go("confirm"); };
 }
 function classifyAndPlan(){
@@ -773,6 +774,7 @@ function viewConfirm(){
   <div class="row" style="margin-top:14px"><button class="btn" id="yesBtn" ${pending.length?"disabled":""}>${toWrite===0?`Yes, keep all ${kept} notes unchanged`:`Yes, prepare ${toWrite} note${toWrite===1?"":"s"}${kept?` and keep ${kept} unchanged`:""}`}</button>${pending.length?`<span class="small">Resolve ${pending.length} decision first</span>`:""}${S.prev&&(kept||S.rewriteAll)?`<label class="small"><input type="checkbox" id="rewriteAll" ${S.rewriteAll?"checked":""}> Rewrite all notes anyway (saved as new page versions)</label>`:""}</div>`;
   const rw=$("#rewriteAll"); if(rw) rw.onchange=()=>{S.rewriteAll=rw.checked; log(rw.checked?"Product chose to rewrite all notes":"Product chose to keep unchanged notes"); viewConfirm();};
   document.querySelectorAll("input[name^=dec-]").forEach(el=>el.onchange=()=>{const id=el.name.slice(4); S.decisions[id]=el.value; log(`${id}: Product chose "${el.parentElement.textContent.trim()}"`); viewConfirm();});
+  if(S.visitor){ $("#yesBtn").onclick=()=>{ $("#yesBtn").insertAdjacentHTML("afterend",`<div class="notice info" style="margin-top:10px"><b>Visitor mode stops here.</b> Writing and certifying use Claude, and saving uses Confluence, so they run only for a signed-in claude.ai user with Atlassian connected. The demo video and the GitHub README show a full run; the Evals tab runs the rule checks here.</div>`); $("#yesBtn").disabled=true; }; return; }
   $("#yesBtn").onclick=()=>{ S.runId=`${S.release}_${S.mode}_${Date.now()}`; S.createdAt=new Date().toISOString(); S.createdBy=S.createdBy||meId;
     log(`Product confirmed: ${toWrite} notes to write${kept?`, ${kept} kept`:""}`,"ok"); persistRun("generating"); go("generate"); runGeneration(); };
 }
